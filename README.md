@@ -44,7 +44,7 @@ Stabilizes video using 5 key points (number is adjustable)
 
 ## Requirements
 
-- Python 3.x
+- Python 3.8.13
 - OpenCV
 - NumPy
 - Pandas
