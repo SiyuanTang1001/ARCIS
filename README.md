@@ -58,9 +58,33 @@ This Jupyter notebook calculates homographic matrices to convert between pixel c
 - NumPy
 - Pandas
 
-## Example Workflow
+## Workflow
 
-```
-# Run the Jupyter notebook to get GPS coordinates
-jupyter notebook getM-Copy1.ipynb
-```
+The recommended workflow sequence is:
+
+1. **Video Stabilization**
+   ```
+   # Stabilize the video first
+   python stabilization1.py --input video.mp4 --output stable_video.mp4
+   # OR use automated drone stabilization
+   python stabTest4.py --input drone_video.mp4 --output stable_drone.mp4
+   ```
+
+2. **Run ARCIS**
+   - Process the stabilized video through ARCIS to extract vehicle data
+
+3. **Add Lane Numbers**
+   ```
+   # Define lanes on the stabilized video
+   python addlanenumber.py --input stable_video.mp4
+   # Process vehicle data with lane information
+   python addLaneNew.py --input arcis_output.csv --lanes lanes.npy --output vehicles_with_lanes.csv
+   ```
+
+4. **Coordinate Transformation**
+   ```
+   # Run the Jupyter notebook to get GPS coordinates
+   jupyter notebook getM-Copy1.ipynb
+   ```
+   - Input the ARCIS output data to calculate homographic matrices
+   - Transform pixel coordinates to real-world GPS coordinates
