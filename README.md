@@ -33,6 +33,15 @@ Automatically stabilizes drone video footage using selected markers
 #### `stabilization1.py`
 Stabilizes video using 5 key points (number is adjustable)
 
+
+### Coordinate Transformation
+
+#### `getM-Copy1.ipynb`
+This Jupyter notebook calculates homographic matrices to convert between pixel coordinates and real-world GPS coordinates.
+- **Input**: Output data from ARCIS
+- **Output**: Transformation matrices for coordinate conversion
+
+
 ## Usage
 
 1. First, process your video with `addlanenumber.py` to define lanes
@@ -52,12 +61,6 @@ Stabilizes video using 5 key points (number is adjustable)
 ## Example Workflow
 
 ```
-# Step 1: Add lane numbers to video
-python addlanenumber.py --input video.mp4
-
-# Step 2: Process vehicle data with lane information
-python addLaneNew.py --input vehicles.csv --lanes lanes.npy --output vehicles_with_lanes.csv
-
-# Step 3: Stabilize video if needed
-python stabilization1.py --input video.mp4 --output stable_video.mp4
+# Run the Jupyter notebook to get GPS coordinates
+jupyter notebook getM-Copy1.ipynb
 ```
